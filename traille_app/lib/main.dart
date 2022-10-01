@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Traille',
-        initialRoute: '/intropage',
+        initialRoute: '/initialroute',
         routes: getRoutes());
   }
 }

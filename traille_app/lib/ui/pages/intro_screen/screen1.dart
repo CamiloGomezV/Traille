@@ -22,7 +22,7 @@ class Screen1 extends StatelessWidget {
           width: responsive.wp(80),
           height: responsive.hp(10),
           child: Text(
-            "Comunicate confiadamente con tus amifos sordo-ciegos",
+            "Comunicate confiadamente con tus amigos sordo-ciegos",
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: responsive.wp(6),

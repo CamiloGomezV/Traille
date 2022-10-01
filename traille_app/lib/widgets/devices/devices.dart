@@ -37,6 +37,7 @@ class _DevicesWidgetState extends State<DevicesWidget> {
         bloc: _bluetoothBloc,
         listener: (BuildContext context, blocs.BluetoothState state) {
           if (state is blocs.DeviceConnected) {
+            Navigator.pop(context);
             Navigator.pushReplacementNamed(context, '/homepage');
           } else if (state is blocs.BluetoothFail) {
             showNotification(context, state.errorMessage, responsive);
