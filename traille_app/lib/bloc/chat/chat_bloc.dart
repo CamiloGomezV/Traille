@@ -13,13 +13,12 @@ class Chat {
 List chatsData = [
   Chat(
       name: "Dispositivo 0",
-      lastMessage: "Hola, cara de bola",
+      lastMessage: "Hola, como  vas con el trabajo",
       time: "3m ago",
       isActive: false),
   Chat(
       name: "Dispositivo 1",
-      lastMessage:
-          "Holaaa, como estas? Queria preguntarte que pasaba si me excedida",
+      lastMessage: "Dale, yo te aviso",
       time: "10m ago",
       isActive: true),
 ];
