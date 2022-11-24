@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:traille_app/Notification/local_notification.dart';
 import 'package:traille_app/utils/responsive/responsive.dart';
 import 'package:traille_app/utils/settings/item_card.dart';
+import 'package:traille_app/ui/pages/appearance/appearancePage.dart';
+import 'package:traille_app/ui/pages/appearance/theme_provider.dart';
 
 class SettingsWidget extends StatelessWidget {
-  const SettingsWidget({super.key});
-
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive(context: context);
@@ -20,8 +21,9 @@ class SettingsWidget extends StatelessWidget {
                   icon: Icon(
                     Icons.add,
                     size: responsive.wp(10),
+                    color:Theme.of(context).iconTheme.color
                   ),
-                  //onpress: () {},
+                 onpress: () {},
                 ),
                 SizedBox(
                   height: responsive.hp(1.2)
@@ -31,19 +33,26 @@ class SettingsWidget extends StatelessWidget {
                   icon: Icon(
                     Icons.notifications,
                     size: responsive.wp(10),
-                  ),
-                  //onpress: () {},
+                    color:Theme.of(context).iconTheme.color,
+                  ), //onpress: () {  },
+                  onpress: () {},
                 ),
                 SizedBox(
                   height: responsive.hp(1.2),
                 ),
-                ItemCard(
+                ItemCard2(
                   title: "Apariencia",
                   icon: Icon(
                     Icons.palette,
                     size: responsive.wp(10),
+                    color:Theme.of(context).iconTheme.color
                   ),
-                  //onpress: () {},
+                  onpress: () { 
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>  appearance()),
+                    );
+                  },
                 ),
               ],
             ),
