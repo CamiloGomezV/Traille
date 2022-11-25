@@ -9,13 +9,19 @@ class ItemCard extends StatelessWidget {
     Key? key,
     required this.title,
     required this.icon,
+    required Null Function() onpress,
     //required this.onpress,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => notification2()),
+        );
+      },
       style: ElevatedButton.styleFrom(
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(

@@ -19,7 +19,7 @@ class Body extends StatelessWidget {
                     Icons.add,
                     size: 39,
                   ),
-                  //onpress: () {},
+                  onpress: () {},
                 ),
                 SizedBox(
                   height: 10,
@@ -35,13 +35,18 @@ class Body extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                ItemCard(
+                ItemCard2(
                   title: "Apariencia",
                   icon: Icon(
                     Icons.palette,
                     size: 32,
                   ),
-                  //onpress: () {},
+                  onpress: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => appearance()),
+                    );
+                  },
                 ),
               ],
             ),
