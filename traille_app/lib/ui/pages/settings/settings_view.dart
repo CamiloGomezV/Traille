@@ -9,7 +9,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(context),
-      body: SettingsWidget(),
+      body: const SettingsWidget(),
     );
   }
 
@@ -22,7 +22,7 @@ class SettingsScreen extends StatelessWidget {
         style: TextStyle(fontSize: responsive.wp(7), color: Colors.black),
       ),
       centerTitle: true,
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor:Theme.of(context).primaryColor,
     );
   }
 }

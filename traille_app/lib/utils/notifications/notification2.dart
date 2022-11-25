@@ -44,7 +44,7 @@ class _notification2 extends State<notification2> {
                         id: 0,
                         title: 'Notificaciones Traille',
                         body: 'Listo para traducir a braile',
-                        seconds: 8,
+                        seconds: 5,
                       );
                     },
                     child: const Text('Encender notificationes',),
