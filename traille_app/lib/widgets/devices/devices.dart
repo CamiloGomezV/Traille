@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:traille_app/bloc/bluetooth/bluetooth_bloc.dart' as blocs;
+import 'package:traille_app/bloc/chat/chat_bloc.dart';
 import 'package:traille_app/utils/notifications/notifications.dart';
 import 'package:traille_app/utils/responsive/responsive.dart';
 
@@ -61,21 +62,36 @@ class _DevicesWidgetState extends State<DevicesWidget> {
                       horizontal: responsive.wp(4), vertical: responsive.hp(2)),
                   child: Column(
                     children: [
-                      SizedBox(height: responsive.hp(5),),
+                      SizedBox(
+                        height: responsive.hp(5),
+                      ),
                       Center(
                         child: Text(
                           "Seleccione un dispositivo",
-                          style: TextStyle(color:  const Color.fromRGBO(21, 191, 174, 1), fontSize: responsive.wp(5)),
+                          style: TextStyle(
+                              color: const Color.fromRGBO(21, 191, 174, 1),
+                              fontSize: responsive.wp(5)),
                         ),
                       ),
-                      SizedBox(height: responsive.hp(3),),
+                      SizedBox(
+                        height: responsive.hp(3),
+                      ),
                       Expanded(
                         child: ListView.separated(
                           itemCount: widget.devices.length,
                           itemBuilder: (context, index) => DeviceWidget(
-                            device: widget.devices[index]!,
-                            callback:(device) =>{
-                              _bluetoothBloc?.add(blocs.ConnectToDevice(device: device))}),
+                              device: widget.devices[index]!,
+                              callback: (device) => {
+                                    chatsData.add(Chat(
+                                        name: device.name ?? device.address,
+                                        lastMessage:
+                                            "",
+                                        time: "",
+                                        isActive: true,
+                                        chatMessages: [])),
+                                    _bluetoothBloc?.add(
+                                        blocs.ConnectToDevice(device: device))
+                                  }),
                           separatorBuilder: (context, _) => Container(
                             height: responsive.wp(1),
                           ),
@@ -91,7 +107,8 @@ class _DevicesWidgetState extends State<DevicesWidget> {
 class DeviceWidget extends StatelessWidget {
   final BluetoothDiscoveryResult device;
   final Function(BluetoothDevice) callback;
-  const DeviceWidget({Key? key, required this.device, required this.callback}) : super(key: key);
+  const DeviceWidget({Key? key, required this.device, required this.callback})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +117,7 @@ class DeviceWidget extends StatelessWidget {
       onTap: () => callback.call(device.device),
       child: Container(
         decoration: BoxDecoration(
-            color:  const Color.fromRGBO(21, 191, 174, 1),
+            color: const Color.fromRGBO(21, 191, 174, 1),
             borderRadius: BorderRadius.circular(responsive.wp(2))),
         padding: EdgeInsets.only(
             top: responsive.wp(3),

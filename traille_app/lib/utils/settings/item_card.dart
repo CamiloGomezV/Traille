@@ -4,22 +4,23 @@ import 'package:traille_app/utils/responsive/responsive.dart';
 class ItemCard extends StatelessWidget {
   final String title;
   final Icon icon;
+  final Function ()? onpress;
   //final VoidCallback onpress;
 
   const ItemCard({
     Key? key,
     required this.title,
     required this.icon,
-    //required this.onpress,
+    required this.onpress,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive(context:context);
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onpress,
       style: ElevatedButton.styleFrom(
-          primary: Colors.white,
+          primary: Theme.of(context).primaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           )),

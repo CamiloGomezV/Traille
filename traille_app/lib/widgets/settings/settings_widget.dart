@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:traille_app/utils/responsive/responsive.dart';
 import 'package:traille_app/utils/settings/item_card.dart';
+import 'package:traille_app/utils/notifications/notification2.dart';
+import 'package:traille_app/ui/pages/appearance/appearancePage.dart';
+
 
 class SettingsWidget extends StatelessWidget {
   const SettingsWidget({super.key});
@@ -20,19 +23,26 @@ class SettingsWidget extends StatelessWidget {
                   icon: Icon(
                     Icons.add,
                     size: responsive.wp(10),
+                    color:Theme.of(context).iconTheme.color
                   ),
+                  onpress: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/bluetooth', (Route<dynamic> route) => false);
+                  },
                   //onpress: () {},
                 ),
-                SizedBox(
-                  height: responsive.hp(1.2)
-                ),
+                SizedBox(height: responsive.hp(1.2)),
                 ItemCard(
                   title: "Notificaciones",
                   icon: Icon(
                     Icons.notifications,
                     size: responsive.wp(10),
+                    color:Theme.of(context).iconTheme.color
                   ),
-                  //onpress: () {},
+                  onpress: () {Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => notification2()),
+                    );},
                 ),
                 SizedBox(
                   height: responsive.hp(1.2),
@@ -42,8 +52,12 @@ class SettingsWidget extends StatelessWidget {
                   icon: Icon(
                     Icons.palette,
                     size: responsive.wp(10),
+                    color:Theme.of(context).iconTheme.color
                   ),
-                  //onpress: () {},
+                  onpress: () {Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>  appearance()),
+                    );},
                 ),
               ],
             ),
